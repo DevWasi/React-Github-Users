@@ -1,0 +1,22 @@
+.card >img {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-45%, 80%);
+  width: 10rem;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  border-radius: 50%;
+  padding: 5px;
+  max-width: 100%;
+  transition: 0.2s;
+}
+.card {
+  position:inherit;
+  max-width: 25rem;
+  height: auto;
+  margin: 7rem auto 2rem;
+  border-radius: .4rem;
+  padding: 5.5rem 2.5rem 1rem;
+}

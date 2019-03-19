@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
+import List from '@material-ui/core/List';
 
 class App extends Component {
   constructor(props) {
@@ -16,7 +17,9 @@ class App extends Component {
       repos: '',
       followers: '',
       url: '',
-      notFound: ''
+      type: '',
+      following: '',
+      public_gists: ''
     };
   }
 
@@ -30,9 +33,11 @@ class App extends Component {
           avatar: data.avatar_url,
           location: data.location,
           repos: data.public_repos,
+          public_gists: data.public_gists,
           followers: data.followers,
+          following: data.following,
           url: data.html_url,
-          notFound: data.message
+          type: data.type
        })
       });
   }
@@ -40,7 +45,6 @@ class App extends Component {
   handleKeyPress = e => {
     if (e.key === 'Enter') {
       this.handleSubmit()
-      e.preventDefault();
     }
   };
 
@@ -50,23 +54,42 @@ class App extends Component {
         <NavBar />
         <TextField
           id="standard-search"
-          label="Search user"
+          label="Enter User"
           type="search"
-          margin="normal"
           value={this.state.username}
           onChange={e => this.setState({
             username: e.target.value
           })}
           onKeyPress={this.handleKeyPress}
         />
-        <Grid
-        container
-        direction="row"
-        justify="space-evenly"
-        alignItems="flex-start"
-        >
+        <Card className="card">
+          <img
+            src={this.state.avatar}
+            alt="I'm Avatar"
+          />
+          <dl>
+            <dt>Name</dt>
+            <dd>{this.state.realName}</dd>
 
-        </Grid>
+            <dt>Location</dt>
+            <dd>{this.state.location}</dd>
+
+            <dt>Number Of Public Repos</dt>
+            <dd>{this.state.repos}</dd>
+
+            <dt>Number Of Public Gists</dt>
+            <dd>{this.state.public_gists}</dd>
+
+            <dt>Number Of Followers</dt>
+            <dd>{this.state.followers}</dd>
+
+            <dt>Number Of Followings</dt>
+            <dd>{this.state.following}</dd>
+
+            <dt>Type</dt>
+            <dd>{this.state.type}</dd>
+          </dl>
+        </Card>
       </div>
     );
   }
